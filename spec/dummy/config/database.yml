@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: open_invoice
+  password: 1
+
+development:
+  <<: *default
+  host: 127.0.0.1
+  database: open_invoice_development
+
+test:
+  <<: *default
+  database: open_invoice_test
+  host: 127.0.0.1
+
+production:
+  <<: *default
+  database: open_invoice_production
