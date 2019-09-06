@@ -1,6 +1,9 @@
 {
   "name": "open_invoice",
-  "private": true,
+  "license": "MIT",
+  "engines": {
+    "yarn": "1.x"
+  },
   "dependencies": {
     "@rails/ujs": "^6.0.0-alpha",
     "bootstrap": "^4.3.1",
