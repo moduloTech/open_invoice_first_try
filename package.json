@@ -1,0 +1,11 @@
+{
+  "name": "open_invoice",
+  "private": true,
+  "dependencies": {
+    "@rails/ujs": "^6.0.0-alpha",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0"
+}

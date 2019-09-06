@@ -4,6 +4,7 @@ log/*.log
 pkg/
 tmp
 !tmp/pids/.keep
+node_modules
 
 spec/dummy/public/assets
 spec/dummy/log/*.log

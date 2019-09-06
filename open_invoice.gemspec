@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
   spec.description = 'Description of OpenInvoice.'
   spec.license     = 'MIT'
 
-  spec.files = Dir['{app,config,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
+  spec.files = Dir['{app,config,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md',
+                   'package.json', 'yarn.lock']
 
   spec.add_dependency 'rails', '~> 6.0'
 
