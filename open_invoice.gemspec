@@ -21,6 +21,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 6.0'
 
+  spec.add_dependency 'carrierwave', '~> 2.0'
+  spec.add_dependency 'orm_adapter', '~> 0.5.0'
   spec.add_dependency 'pg', '~> 1.1'
 
   spec.add_development_dependency 'rubocop', '~> 0.74'

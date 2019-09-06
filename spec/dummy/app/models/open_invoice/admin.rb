@@ -1,6 +1,6 @@
 module OpenInvoice
 
-  class Admin < ApplicationRecord
+  class Admin < ::ApplicationRecord
 
     # allow admin to authenticate
     # validate model on create/update

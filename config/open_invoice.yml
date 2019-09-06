@@ -1,0 +1,2 @@
+orm: active_record
+orm_base: '::ApplicationRecord'

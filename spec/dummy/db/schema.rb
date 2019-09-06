@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_064331) do
+ActiveRecord::Schema.define(version: 2019_09_06_095958) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "open_invoice_admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +30,18 @@ ActiveRecord::Schema.define(version: 2019_09_04_064331) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_open_invoice_admins_on_email", unique: true
+  end
+
+  create_table "open_invoice_invoices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "invoice_number"
+    t.string "subject"
+    t.datetime "due_date"
+    t.string "original_file"
+    t.decimal "amount_vat_excluded", precision: 10, scale: 2, null: false
+    t.decimal "amount_vat_included", precision: 10, scale: 2, null: false
+    t.string "secure_key", limit: 20, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
