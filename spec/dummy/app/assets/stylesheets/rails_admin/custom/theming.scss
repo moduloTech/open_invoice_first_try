@@ -1,0 +1,22 @@
+// spacing helpers for rails_admin outdated bootstrap 3 extracted from bootstrap 4
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+) !default;
+
+@import "bootstrap/scss/mixins/breakpoints";
+@import "bootstrap/scss/utilities/spacing";

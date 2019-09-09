@@ -8,6 +8,8 @@ module OpenInvoice
 
     included do
       rails_admin do
+        navigation_icon 'fa fa-briefcase mr-2'
+
         create do
           configure :secure_key do
             default_value { SecureRandom.hex(10) }
