@@ -6,12 +6,12 @@
     "payments",
     "opensource"
   ],
-  "website": "https://open-invoice.co/",
+  "website": "https://open-invoice.co",
   "repository": "https://github.com/moduloTech/open_invoice",
-  "logo": "https://open-invoice.co/favicon.ico",
+  "logo": "https://github.com/moduloTech/open_invoice/blob/master/app/assets/images/open_invoice/logo.svg",
   "success_url": "/welcome",
   "scripts": {
-    "postdeploy": "bundle exec rails db:migrate db:seed"
+    "postdeploy": "./r.sh"
   },
   "env": {
     "SECRET_TOKEN": {
