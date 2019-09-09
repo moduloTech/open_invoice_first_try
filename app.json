@@ -8,7 +8,7 @@
   ],
   "website": "https://open-invoice.co",
   "repository": "https://github.com/moduloTech/open_invoice",
-  "logo": "https://raw.githubusercontent.com/moduloTech/open_invoice/master/app/assets/images/open_invoice/logo.svg",
+  "logo": "https://raw.githubusercontent.com/moduloTech/open_invoice/master/app/assets/images/open_invoice/logo.svg?sanitize=true",
   "success_url": "/welcome",
   "scripts": {
     "postdeploy": "./r.sh"
