@@ -1,0 +1,26 @@
+<% @title = 'Welcome' %>
+
+<h1>Post-deploy <span class="text-primary">Welcome</span> page</h1>
+
+<p>Here we should cover next steps for new repository owners. Like:</p>
+<ol>
+  <li>
+    <span class="text-danger font-weight-bolder">Change admin password</span> (or remove default admin and replace with
+    new one)
+    <ul>
+      <li>Go to <%= link_to 'Admin Dashboard', rails_admin.dashboard_path %></li>
+      <li>Input credentials email: <b>admin@admin</b>, password: <b>admin@admin</b></li>
+      <li>Change
+        <%= link_to 'default admin', rails_admin.edit_path(model_name: OpenInvoice::Admin.name, id: 1) %>
+        password or create new admin (and remove default admin)</li>
+    </ul>
+  </li>
+  <li>
+    Upgrade plans for data-storage AddOns:
+    <ul>
+      <li>PostgreSQL</li>
+      <li>Amazon S3</li>
+    </ul>
+  </li>
+  <li>etc.</li>
+</ol>

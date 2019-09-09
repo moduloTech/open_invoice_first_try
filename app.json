@@ -1,0 +1,44 @@
+{
+  "name": "Open Invoice",
+  "description": "Open Invoice Description.",
+  "keywords": [
+    "invoices",
+    "payments",
+    "opensource"
+  ],
+  "website": "https://open-invoice.co/",
+  "repository": "https://github.com/moduloTech/open_invoice",
+  "logo": "https://open-invoice.co/favicon.ico",
+  "success_url": "/welcome",
+  "scripts": {
+    "postdeploy": "bundle exec rails db:migrate db:seed"
+  },
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "5"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    }
+  ],
+  "buildpacks": [
+    "heroku/ruby"
+  ],
+  "stack": "heroku-18"
+}
