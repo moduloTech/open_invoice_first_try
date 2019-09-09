@@ -1,4 +1,8 @@
+<img src="app/assets/images/open_invoice/logo.svg" align="right" alt="..." width="200px" />
+
 # OpenInvoice
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 Initial development. Documentation would be here when something would work.
 
 ## Usage

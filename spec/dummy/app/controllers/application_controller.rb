@@ -2,6 +2,8 @@
 
 class ApplicationController < ActionController::Base
 
-  layout 'open_invoice/application'
+  helper OpenInvoice::Engine.helpers
+
+  layout 'application'
 
 end
