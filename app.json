@@ -38,7 +38,9 @@
     }
   ],
   "buildpacks": [
-    "heroku/ruby"
+    {
+      "url": "heroku/ruby"
+    }
   ],
   "stack": "heroku-18"
 }
