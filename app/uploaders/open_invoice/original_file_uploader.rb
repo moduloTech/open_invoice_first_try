@@ -4,9 +4,6 @@ module OpenInvoice
 
   class OriginalFileUploader < CarrierWave::Uploader::Base
 
-    DEFAULT_DIR_PREFIX = 'uploads'
-    STORE_DIR_PREFIX = ENV.fetch('AWS_DIR_PREFIX') { DEFAULT_DIR_PREFIX }.freeze
-
     # Include RMagick or MiniMagick support:
     # include CarrierWave::RMagick
     # include CarrierWave::MiniMagick
@@ -20,7 +17,10 @@ module OpenInvoice
     # Override the directory where uploaded files will be stored.
     # This is a sensible default for uploaders that are meant to be mounted:
     def store_dir
-      "#{STORE_DIR_PREFIX}/#{model.class.to_s.underscore}/#{mounted_as}/#{model&.id}"
+      File.join(OpenInvoice.config.aws_dir_prefix,
+                model.class.to_s.underscore,
+                mounted_as.to_s,
+                model&.id.to_s)
     end
 
     # Provide a default URL as a default if there hasn't been a file uploaded:

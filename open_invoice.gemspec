@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
 
   spec.files = Dir['{app,config,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md',
-                   'package.json', 'yarn.lock']
+                   'package.json', 'yarn.lock', 'r.sh']
 
   spec.add_dependency 'rails', '~> 6.0'
 

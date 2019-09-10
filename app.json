@@ -31,10 +31,12 @@
   },
   "addons": [
     {
-      "plan": "heroku-postgresql",
-      "options": {
-        "version": "9.5"
-      }
+      "plan": "heroku-postgresql:hobby-dev",
+      "as": "DATABASE"
+    },
+    {
+      "plan": "cloudcube:free",
+      "as": "CLOUDCUBE"
     }
   ],
   "buildpacks": [
