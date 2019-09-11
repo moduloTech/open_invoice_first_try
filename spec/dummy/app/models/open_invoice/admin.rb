@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module OpenInvoice
 
+  # Author: varaby_m@modulotech.fr
   class Admin < ::ApplicationRecord
 
     # allow admin to authenticate

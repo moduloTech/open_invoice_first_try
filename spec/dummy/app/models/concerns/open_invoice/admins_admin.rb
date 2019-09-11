@@ -2,6 +2,8 @@
 
 module OpenInvoice
 
+  # Author: varaby_m@modulotech.fr
+  # extension of admin model for rails_admin
   module AdminsAdmin
 
     extend ActiveSupport::Concern

@@ -11,6 +11,8 @@
 
   <%= stylesheet_link_tag    'open_invoice/application', media: 'all' %>
   <%= javascript_include_tag 'open_invoice/application', data: { tubolinks_track: :reload } %>
+
+  <%= content_for(:open_invoice_head) %>
 </head>
 <body>
 

@@ -1,0 +1,18 @@
+en:
+  welcome:
+    index:
+      title: Welcome
+      post_deploy: Post-deploy
+      page: page
+      here: Here we should cover next steps for new repository owners. Like
+      change_pwd: Change admin password
+      or_remove: or remove default admin and replace with new one
+      goto: Go to
+      admin_dashboard: Admin Dashboard
+      input_email: Input credentials email
+      input_password: password
+      change: Change
+      default_admin: default admin
+      password_or_create: password or create new admin (and remove default admin)
+      addons: Upgrade plans for data-storage AddOns
+

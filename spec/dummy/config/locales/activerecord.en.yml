@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      open_invoice/admin: Administrator
+    attributes:
+      open_invoice/admin:
+        email: Email address
+        password: Password

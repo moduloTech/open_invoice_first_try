@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      open_invoice/invoice: Invoice
+    attributes:
+      open_invoice/invoice:
+        invoice_number: Invoice number
+        subject: Subject
+        due_date: Due date
+        original_file: Original file
+        amount_vat_excluded: Amount VAT excluded
+        amount_vat_included: Amount VAT included
+        secure_key: Secure key

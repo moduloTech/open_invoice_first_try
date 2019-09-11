@@ -1,22 +1,31 @@
-<% @title = 'Welcome' %>
+<% @title = t('welcome.index.title') %>
 
-<h1>Post-deploy <span class="text-primary">Welcome</span> page</h1>
+<h1>
+  <%= t('welcome.index.post_deploy') %>
+  <span class="text-primary"><%= t('welcome.index.title') %></span>
+  <%= t('welcome.index.page') %>
+</h1>
 
-<p>Here we should cover next steps for new repository owners. Like:</p>
+<p><%= t('welcome.index.here') %>:</p>
 <ol>
   <li>
-    <span class="text-danger font-weight-bolder">Change admin password</span> (or remove default admin and replace with
-    new one)
+    <span class="text-danger font-weight-bolder"><%= t('welcome.index.change_pwd') %></span>
+    (<%= t('welcome.index.or_remove') %>)
     <ul>
-      <li>Go to <%= link_to 'Admin Dashboard', rails_admin.dashboard_path %></li>
-      <li>Input credentials email: <b>admin@admin</b>, password: <b>admin@admin</b></li>
-      <li>Change
-        <%= link_to 'default admin', rails_admin.edit_path(model_name: OpenInvoice::Admin.name, id: 1) %>
-        password or create new admin (and remove default admin)</li>
+      <li><%= t('welcome.index.goto') %> <%= link_to t('welcome.index.admin_dashboard'), rails_admin.dashboard_path %></li>
+      <li>
+        <%= t('welcome.index.input_email') %>: <b>admin@admin</b>,
+        <%= t('welcome.index.input_password') %>: <b>admin@admin</b>
+      </li>
+      <li>
+        <%= t('welcome.index.change') %>
+        <%= link_to t('welcome.index.default_admin'), rails_admin.edit_path(model_name: OpenInvoice::Admin.name, id: 1) %>
+        <%= t('welcome.index.password_or_create') %>
+      </li>
     </ul>
   </li>
   <li>
-    Upgrade plans for data-storage AddOns:
+    <%= t('welcome.index.addons') %>:
     <ul>
       <li>PostgreSQL</li>
       <li>Amazon S3</li>
