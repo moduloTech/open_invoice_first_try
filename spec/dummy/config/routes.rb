@@ -4,9 +4,9 @@
 # routes for dummy app
 Rails.application.routes.draw do
   # mount engine at /open_invoice endpoint
-  mount OpenInvoice::Engine => '/open_invoice'
+  mount OpenInvoice::Engine => '/ext'
   # root is redirected to it
-  get '/', to: redirect('/open_invoice')
+  get '/', to: redirect('/ext')
 
   # devise allow admins only login/logout
   devise_for :admins, class_name: 'OpenInvoice::Admin', only: :sessions, module: :devise

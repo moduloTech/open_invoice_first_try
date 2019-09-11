@@ -19,6 +19,10 @@ module OpenInvoice
               numericality: { greater_than_or_equal_to: :amount_vat_excluded },
               if:           -> { amount_vat_included && amount_vat_excluded }
 
+    def vat
+      amount_vat_included - amount_vat_excluded
+    end
+
   end
 
 end

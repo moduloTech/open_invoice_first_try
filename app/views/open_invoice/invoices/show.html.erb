@@ -1,0 +1,75 @@
+<div class="row mt-3">
+  <div class="col-md-6">
+    <%= content_tag :iframe, src: @invoice.original_file.url, class: 'w-100',
+                    style: 'min-height: 500px; border: none' do %>
+      loading...
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <div class="row my-1">
+      <div class="col">
+        <%= t('activerecord.models.open_invoice/invoice') %> <b><%= @invoice.id %></b>
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col">
+        <%= @invoice.subject %>
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col">
+        <%= link_to open_invoice.invoice_path(@invoice, format: :pdf), target: :blank, class: 'btn btn-secondary btn-sm' do %>
+          <%= t('invoices.show.download') %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="row my-1">
+      <div class="col-md-6 font-weight-bolder">
+        <%= t('activerecord.attributes.open_invoice/invoice.invoice_number') %>
+      </div>
+      <div class="col-md-6">
+        <%= @invoice.invoice_number %>
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-md-6 font-weight-bolder">
+        <%= t('activerecord.attributes.open_invoice/invoice.due_date') %>
+      </div>
+      <div class="col-md-6">
+        <%= content_tag :span, class: due_date_color(@invoice) do %>
+          <%= @invoice.due_date %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="row my-1">
+      <div class="col-md-6 font-weight-bolder">
+        <%= t('activerecord.attributes.open_invoice/invoice.amount_vat_excluded') %>
+      </div>
+      <div class="col-md-6">
+        <%= @invoice.amount_vat_excluded %>
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-md-6 font-weight-bolder">
+        <%= t('activerecord.attributes.open_invoice/invoice.vat') %>
+      </div>
+      <div class="col-md-6">
+        <%= @invoice.vat %>
+      </div>
+    </div>
+    <div class="row my-1">
+      <div class="col-md-6 font-weight-bolder">
+        <%= t('activerecord.attributes.open_invoice/invoice.amount_vat_included') %>
+      </div>
+      <div class="col-md-6">
+        <%= @invoice.amount_vat_included %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,4 +10,5 @@ en:
         original_file: Original file
         amount_vat_excluded: Amount VAT excluded
         amount_vat_included: Amount VAT included
+        vat: VAT
         secure_key: Secure key

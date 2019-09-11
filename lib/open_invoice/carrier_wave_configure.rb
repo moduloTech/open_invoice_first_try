@@ -17,4 +17,6 @@ CarrierWave.configure do |config|
   # all files are private by default. when link is obtained it has limited lifetime
   config.fog_public     =  false
   config.fog_attributes =  {}
+  # link expires in 5 minutes
+  config.fog_authenticated_url_expiration = 5.minutes
 end

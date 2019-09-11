@@ -13,6 +13,10 @@ module OpenInvoice
       app.config.assets.paths << root.join('node_modules')
     end
 
+    initializer 'open_invoice.mime_types' do
+      Mime::Type.register 'application/pdf', :pdf
+    end
+
   end
 
 end
