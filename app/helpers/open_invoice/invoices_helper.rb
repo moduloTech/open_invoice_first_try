@@ -6,6 +6,8 @@ module OpenInvoice
   module InvoicesHelper
 
     def due_date_color(invoice)
+      return '' unless invoice.due_date
+
       diff = invoice.due_date - Time.zone.now
       if diff <= 1.day
         'text-danger font-weight-bold'
