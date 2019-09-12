@@ -98,6 +98,16 @@ module OpenInvoice
       @aws_dir_prefix || DEFAULT_DIR_PREFIX
     end
 
+    ### General options
+
+    # option to allow errors slip through catchers and raise at the root level
+    attr_accessor :raise_in_development
+
+    # helper for raise_in_development
+    def raise_in_development?
+      @raise_in_development.present?
+    end
+
   end
 
   # error class for invalid openinvoice configuration

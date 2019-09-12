@@ -2,3 +2,4 @@ en:
   invoices:
     show:
       download: Download PDF
+      not_found: Invoice %{uuid} was not found
