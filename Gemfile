@@ -11,4 +11,18 @@ gemspec
 
 gem 'devise', '~> 4.7'
 gem 'puma', '~> 4.1'
+gem 'pg', '~> 1.1'
 gem 'rails_admin', '~> 2.0'
+
+group :development, :test do
+  gem 'rubocop', '~> 0.74', require: false
+  gem 'rubocop-rails', '~> 2.3', require: false
+end
+
+group :test do
+  gem 'rspec-rails'
+  # gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+end

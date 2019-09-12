@@ -25,8 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'fog-aws', '~> 3.5.2'
   spec.add_dependency 'jbuilder', '~> 2.9'
   spec.add_dependency 'orm_adapter', '~> 0.5.0'
-  spec.add_dependency 'pg', '~> 1.1'
-
-  spec.add_development_dependency 'rubocop', '~> 0.74'
-  spec.add_development_dependency 'rubocop-rails', '~> 2.3'
 end

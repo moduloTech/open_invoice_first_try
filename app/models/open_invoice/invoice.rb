@@ -19,6 +19,8 @@ module OpenInvoice
               numericality: { greater_than_or_equal_to: :amount_vat_excluded },
               if:           -> { amount_vat_included && amount_vat_excluded }
 
+    # VAT helper function
+    # calculates as diff between amounts with and without VAT
     def vat
       amount_vat_included - amount_vat_excluded
     end
