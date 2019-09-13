@@ -8,6 +8,8 @@ module OpenInvoice
   # invoices controller allows to access invoices by uuid
   class InvoicesController < ApplicationController
 
+    include FileStreaming
+
     # wrap content with container
     layout 'open_invoice/container'
 
@@ -24,10 +26,8 @@ module OpenInvoice
         if @invoice
           # respond with views for :html and :json
           format.any(:html, :json)
-          # redirect to file's direct url for :pdf
-          # that link is temporary and expires in the configured period
-          # see lib/open_invoice/carrier_wave_configure
-          format.pdf { redirect_to @invoice.original_file.url }
+          # stream pdf from carrierwave to customer
+          format.pdf { stream_file(@invoice.original_file) }
         else
           # error message
           message = I18n.t('invoices.show.not_found', uuid: uuid)

@@ -21,8 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '~> 6.0'
 
-  spec.add_dependency 'carrierwave', '~> 2.0'
-  spec.add_dependency 'fog-aws', '~> 3.5.2'
+  spec.add_dependency 'carrierwave-aws'
   spec.add_dependency 'jbuilder', '~> 2.9'
   spec.add_dependency 'orm_adapter', '~> 0.5.0'
 end

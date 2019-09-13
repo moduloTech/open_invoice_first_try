@@ -2,7 +2,7 @@
 
 require 'open_invoice/engine'
 require 'open_invoice/configuration'
-require 'carrierwave'
+require 'carrierwave-aws'
 require 'jbuilder'
 
 module OpenInvoice

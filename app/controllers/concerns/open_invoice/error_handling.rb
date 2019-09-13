@@ -3,7 +3,7 @@
 module OpenInvoice
 
   # Author: varaby_m@modulotech.fr
-  module ErrorHandler
+  module ErrorHandling
 
     extend ActiveSupport::Concern
 

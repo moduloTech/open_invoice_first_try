@@ -7,7 +7,7 @@ module OpenInvoice
   class OriginalFileUploader < CarrierWave::Uploader::Base
 
     # Choose what kind of storage to use for this uploader:
-    storage Rails.env.production? ? :fog : :file
+    storage Rails.env.production? ? :aws : :file
 
     cache_storage :file
 
