@@ -7,13 +7,13 @@ module OpenInvoice
   class OriginalFileUploader < CarrierWave::Uploader::Base
 
     # Choose what kind of storage to use for this uploader:
-    storage Rails.env.production? ? :aws : :file
+    storage OpenInvoice.config.storage
 
     cache_storage :file
 
     # Override the directory where uploaded files will be stored.
     def store_dir
-      File.join(OpenInvoice.config.aws_dir_prefix,
+      File.join(OpenInvoice.config.dir_prefix,
                 model.class.to_s.underscore,
                 mounted_as.to_s,
                 model&.id.to_s)

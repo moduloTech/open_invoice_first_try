@@ -47,14 +47,14 @@ module OpenInvoice
     ### ORMs
 
     # supported orms
-    SUPPORTED_ORMS = %w[active_record].freeze
+    SUPPORTED_ORM = %w[active_record].freeze
 
     # orm is name like :active_record or :mongoid
     # orm_base is a base class for models like "::ApplicationRecord"
     attr_accessor :orm, :orm_base
 
     # validate orm to be one of supported
-    validates :orm, presence: true, inclusion: { in: SUPPORTED_ORMS }
+    validates :orm, presence: true, inclusion: { in: SUPPORTED_ORM }
     # validate orm_base to be populated
     validates :orm_base, presence: true
 
@@ -63,27 +63,12 @@ module OpenInvoice
       orm_base.constantize
     end
 
-    ### AWS
+    ### Storage
 
-    # default directory root inside public, when :file storage is chosen for carrierwave
-    DEFAULT_DIR_PREFIX = 'uploads'
+    SUPPORTED_STORAGE = %i[aws file].freeze
 
     # aws credentials
     attr_accessor :aws_key_id, :aws_secret, :aws_region, :aws_bucket
-    attr_writer :aws_dir_prefix
-
-    # aws credentials are required in production
-    validates :aws_key_id, :aws_secret, :aws_region, :aws_bucket,
-              presence: true, if: -> { Rails.env.production? }
-
-    # method to populate all required aws credentials from env
-    def init_aws!
-      @aws_key_id =     ENV['AWS_KEY_ID']
-      @aws_secret =     ENV['AWS_SECRET']
-      @aws_region =     ENV['AWS_REGION']
-      @aws_bucket =     ENV['AWS_BUCKET']
-      @aws_dir_prefix = ENV['AWS_DIR_PREFIX']
-    end
 
     # prefix for file storage
     # some add-ons on heroku (cloud-cube) have single bucket and
@@ -93,9 +78,32 @@ module OpenInvoice
     # "123xyz/some_file.pdf"
     # "123xyz/some_file_other_file.pdf"
     # "123xyz/public/file_in_public_folder.pdf"
-    def aws_dir_prefix
-      # when not configured returns default value
-      @aws_dir_prefix || DEFAULT_DIR_PREFIX
+    # when using file storage you can specify relative links to public folder like:
+    # "uploads" -> files would be stored to "rails_root/public/uploads"
+    # or you can specify absolute path starting with slash
+    # "/some_folder/files"
+    attr_accessor :dir_prefix
+
+    # carrierwave storage for files
+    attr_accessor :storage
+
+    # aws credentials are required in production
+    validates :aws_key_id, :aws_secret, :aws_region, :aws_bucket,
+              presence: true, if: :storage_aws?
+    # storage should be one of: :aws, :file
+    validates :storage, inclusion: { in: SUPPORTED_STORAGE }
+
+    # method to populate all required aws credentials from env
+    def init_aws!
+      @aws_key_id = ENV['AWS_KEY_ID']
+      @aws_secret = ENV['AWS_SECRET']
+      @aws_region = ENV['AWS_REGION']
+      @aws_bucket = ENV['AWS_BUCKET']
+      @dir_prefix = ENV['DIR_PREFIX']
+    end
+
+    def storage_aws?
+      storage.present? && storage.to_sym == :aws
     end
 
     ### General options

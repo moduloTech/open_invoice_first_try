@@ -5,4 +5,7 @@ OpenInvoice.configure do |config|
     require 'cloud_cube'
     CloudCube.new.integrate(config)
   end
+
+  # configure storage
+  config.storage = Rails.env.production? ? :aws : :file
 end

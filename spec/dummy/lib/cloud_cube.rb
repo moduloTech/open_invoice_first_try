@@ -28,7 +28,7 @@ class CloudCube
     # after being split with regex %r{http?s://|/|\.}
     # becomes array ["", "cloud-cube-eu", "s3", "amazonaws", "com", "xyz123"]
     # and we take second and last elements of the array using assignment decompose
-    _, config.aws_bucket, *, config.aws_dir_prefix = @url.split(%r{http?s://|/|\.})
+    _, config.aws_bucket, *, config.dir_prefix = @url.split(%r{http?s://|/|\.})
     # determine region from bucket name
     config.aws_region = region(config.aws_bucket)
   end

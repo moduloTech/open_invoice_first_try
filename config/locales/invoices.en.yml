@@ -2,4 +2,5 @@ en:
   invoices:
     show:
       download: Download PDF
+      json: View as JSON
       not_found: Invoice %{uuid} was not found

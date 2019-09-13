@@ -1,2 +1,4 @@
 orm: active_record
 orm_base: '::ApplicationRecord'
+storage: :aws
+dir_prefix: uploads
