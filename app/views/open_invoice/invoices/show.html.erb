@@ -1,9 +1,9 @@
 <div class="row mt-3">
   <div class="col-md-6">
-    <%= content_tag :iframe, src: @invoice.original_file.url, class: 'w-100',
-                    style: 'min-height: 500px; border: none' do %>
-      loading...
-    <% end %>
+    <% data_url = "data:#{@invoice.original_file.content_type};"\
+                  "base64,#{Base64.strict_encode64(@invoice.original_file.read)}" %>
+    <%= content_tag :iframe, nil, src: data_url, type: 'application/pdf', width: '100%', height: '500px',
+                    style: 'border: none;' %>
   </div>
   <div class="col-md-6">
     <div class="row my-1">
@@ -18,8 +18,12 @@
     </div>
     <div class="row my-1">
       <div class="col">
-        <%= link_to open_invoice.invoice_path(@invoice, format: :pdf), target: :blank, class: 'btn btn-secondary btn-sm' do %>
+        <%= link_to open_invoice.invoice_path(@invoice, format: :pdf), target: :blank, class: 'btn btn-secondary btn-sm mr-2' do %>
           <%= t('invoices.show.download') %>
+          <%= number_to_human_size(@invoice.original_file.size) %>
+        <% end %>
+        <%= link_to open_invoice.invoice_path(@invoice, format: :json), target: :blank, class: 'btn btn-secondary btn-sm' do %>
+          <%= t('invoices.show.json') %>
         <% end %>
       </div>
     </div>

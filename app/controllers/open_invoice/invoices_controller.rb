@@ -27,7 +27,7 @@ module OpenInvoice
           # respond with views for :html and :json
           format.any(:html, :json)
           # stream pdf from carrierwave to customer
-          format.pdf { stream_file(@invoice.original_file) }
+          format.pdf { stream_file(@invoice.original_file, params[:inline].present?) }
         else
           # error message
           message = I18n.t('invoices.show.not_found', uuid: uuid)

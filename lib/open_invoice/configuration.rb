@@ -93,15 +93,7 @@ module OpenInvoice
     # storage should be one of: :aws, :file
     validates :storage, inclusion: { in: SUPPORTED_STORAGE }
 
-    # method to populate all required aws credentials from env
-    def init_aws!
-      @aws_key_id = ENV['AWS_KEY_ID']
-      @aws_secret = ENV['AWS_SECRET']
-      @aws_region = ENV['AWS_REGION']
-      @aws_bucket = ENV['AWS_BUCKET']
-      @dir_prefix = ENV['DIR_PREFIX']
-    end
-
+    # helper to check if aws is used
     def storage_aws?
       storage.present? && storage.to_sym == :aws
     end
