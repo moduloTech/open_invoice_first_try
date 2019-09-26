@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head>
+  <title><%= OpenInvoice.app_name %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #CCCCCC;
+      font-size: 16px;
+    }
+    .text-primary {
+      color: #6495ED
+    }
+    .text-secondary {
+      color: #696969
+    }
+    .text-center {
+      text-align: center;
+    }
+    .btn {
+      padding: 10px 30px;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: #6495ED;
+      color: #EEEEEE;
+    }
+    .btn-primary:hover {
+      background: #44809D;
+    }
+    header {
+      padding: 0 10px;
+    }
+    main {
+      background-color: #EFEFEF;
+      padding: 20px 10px;
+    }
+    footer {
+      margin-top: 20px;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h3><%= OpenInvoice.app_name %></h3>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+    <p>TODO: describe open invoice project here!</p>
+    <p>link to <%= link_to OpenInvoice.app_name, 'https://open-invoice.co' %></p>
+    <p>link to <%= link_to 'GitHub project', 'https://github.com/moduloTech/open_invoice' %></p>
+  </footer>
+</body>
+</html>

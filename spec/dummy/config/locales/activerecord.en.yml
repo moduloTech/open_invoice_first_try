@@ -1,7 +1,9 @@
 en:
   activerecord:
     models:
-      open_invoice/admin: Administrator
+      open_invoice/admin:
+        one: Administrator
+        other: Administrators
     attributes:
       open_invoice/admin:
         email: Email address

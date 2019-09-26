@@ -10,6 +10,13 @@ module OpenInvoice
     # it should be a pdf file
     mount_uploader :original_file, OriginalFileUploader
 
+    # links that allow recipient access to invoice
+    has_many :links, class_name: 'OpenInvoice::Link', dependent: :destroy
+    # recipients that receive invoice
+    has_many :recipients, class_name: 'OpenInvoice::Recipient', through: :links
+    # recipient visits of invoice links
+    has_many :visits, class_name: 'OpenInvoice::Visit', dependent: :destroy
+
     # amounts, secure key and original_file are required
     validates :amount_vat_excluded, :amount_vat_included, :secure_key, :original_file,
               presence: true

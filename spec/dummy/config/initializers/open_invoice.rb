@@ -15,4 +15,21 @@ OpenInvoice.configure do |config|
     require 'cloud_cube'
     CloudCube.new.integrate(config)
   end
+
+  config.app_name = ENV.fetch('OPEN_INVOICE_APP_NAME') { 'Open Invoice' }
+  config.mailer_default_from = ENV['OPEN_INVOICE_MAILER_FROM'] if ENV['OPEN_INVOICE_MAILER_FROM']
+  config.domain = ENV.fetch('OPEN_INVOICE_DOMAIN') { 'localhost' }
+  config.host = ENV.fetch('OPEN_INVOICE_HOST') { 'http://localhost:3000' }
+  Rails.configuration.action_mailer.default_url_options ||= {}
+  Rails.configuration.action_mailer.default_url_options[:host] = config.host
+
+  if ENV['SMTP_USERNAME'].blank? && ENV['SENDGRID_USERNAME'].present?
+    require 'send_grid'
+    Rails.configuration.action_mailer.smtp_settings = SendGrid.settings
+  end
+
+  require 'application_record'
+  require 'application_mailer'
+
+  config.catch_engine_errors = false
 end

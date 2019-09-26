@@ -1,0 +1,20 @@
+<p>
+  <%= t('invoice_mailer.recipient_added.hi') %>
+  <span class="text-primary"><b><%= link_to OpenInvoice.app_name, root_url, target: '_blank' %></b></span>
+</p>
+<p><%= t('invoice_mailer.recipient_added.subject') %>: <%= @invoice.subject %></p>
+<p><%= t('invoice_mailer.recipient_added.follow') %>:</p>
+<p class="text-center">
+  <%= link_to t('invoice_mailer.recipient_added.link').upcase,
+              invoice_url(@invoice, recipient_id: @recipient.id), class: 'btn btn-primary',
+              target: '_blank' %>
+</p>
+<% if @other.present? %>
+  <p><%= t('invoice_mailer.recipient_added.addressed') %>:</p>
+  <ul>
+    <% @other.each do |recipient| %>
+      <% next if recipient == @recipient %>
+      <li><%= recipient.email %></li>
+    <% end %>
+  </ul>
+<% end %>

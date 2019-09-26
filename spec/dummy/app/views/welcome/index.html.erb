@@ -19,7 +19,7 @@
       </li>
       <li>
         <%= t('welcome.index.change') %>
-        <%= link_to t('welcome.index.default_admin'), rails_admin.edit_path(model_name: OpenInvoice::Admin.name, id: 1) %>
+        <%= link_to t('welcome.index.default_admin'), rails_admin.edit_path(model_name: OpenInvoice::Admin.admin_model_name, id: 1) %>
         <%= t('welcome.index.password_or_create') %>
       </li>
     </ul>

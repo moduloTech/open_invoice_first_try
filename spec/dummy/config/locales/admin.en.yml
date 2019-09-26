@@ -1,0 +1,16 @@
+en:
+  admin:
+    actions:
+      send_invoice:
+        menu: Send Invoice
+        title: Send Invoice to multiple recipients
+        breadcrumb: Send Invoice
+    views:
+      send_invoice:
+        list_recipients: List recipients in the email body.
+        from: From existing
+        recipient_s: Recipient(s)
+        name: Name
+        email: Email
+        add: Add
+        submit: Submit

@@ -1,7 +1,15 @@
 en:
   activerecord:
     models:
-      open_invoice/invoice: Invoice
+      open_invoice/invoice:
+        one: Invoice
+        other: Invoices
+      open_invoice/recipient:
+        one: Recipient
+        other: Recipients
+      open_invoice/view:
+        one: Invoice View
+        other: Invoice Views
     attributes:
       open_invoice/invoice:
         invoice_number: Invoice number
@@ -12,3 +20,6 @@ en:
         amount_vat_included: Amount VAT included
         vat: VAT
         secure_key: Secure key
+      open_invoice/recipient:
+        email: Email
+

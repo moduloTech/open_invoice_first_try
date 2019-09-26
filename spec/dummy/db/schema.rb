@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_06_095958) do
+ActiveRecord::Schema.define(version: 2019_09_17_123812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -42,6 +42,30 @@ ActiveRecord::Schema.define(version: 2019_09_06_095958) do
     t.string "secure_key", limit: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "open_invoice_links", force: :cascade do |t|
+    t.uuid "invoice_id", null: false
+    t.uuid "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["invoice_id", "recipient_id"], name: "index_open_invoice_links_on_invoice_id_and_recipient_id", unique: true
+    t.index ["recipient_id"], name: "index_open_invoice_links_on_recipient_id"
+  end
+
+  create_table "open_invoice_recipients", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_open_invoice_recipients_on_email", unique: true
+  end
+
+  create_table "open_invoice_visits", force: :cascade do |t|
+    t.uuid "invoice_id", null: false
+    t.uuid "recipient_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["invoice_id"], name: "index_open_invoice_visits_on_invoice_id"
+    t.index ["recipient_id"], name: "index_open_invoice_visits_on_recipient_id"
   end
 
 end

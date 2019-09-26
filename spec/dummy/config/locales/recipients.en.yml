@@ -1,0 +1,6 @@
+en:
+  recipients:
+    create:
+      recipient: recipient
+      success: Sent invoice to %{total} %{recipient}.
+      fail: Specify recipients.

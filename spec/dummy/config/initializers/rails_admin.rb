@@ -1,3 +1,5 @@
+require 'rails_admin/config/actions/send_invoice'
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -30,6 +32,7 @@ RailsAdmin.config do |config|
     # export
     bulk_delete
     show
+    send_invoice
     edit
     delete
     # show_in_app
@@ -40,5 +43,12 @@ RailsAdmin.config do |config|
   end
 end
 
-OpenInvoice::Invoice.send(:include, OpenInvoice::InvoicesAdmin)
-OpenInvoice::Admin.send(:include, OpenInvoice::AdminsAdmin)
+# load models and inject rails_admin logic
+%w[admin invoice recipient visit link].each do |model|
+  model_str = "open_invoice/#{model}"
+  require model_str
+  require "concerns/open_invoice/#{model.pluralize}_admin"
+  model_str.classify.constantize.send(
+    :include, "open_invoice/#{model.pluralize}_admin".classify.constantize
+  )
+end

@@ -18,6 +18,9 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'factory_bot'
+FactoryBot.definition_file_paths = ['spec/factories']
+FactoryBot.find_definitions
+
 require 'database_cleaner'
 DatabaseCleaner.strategy = :transaction
 

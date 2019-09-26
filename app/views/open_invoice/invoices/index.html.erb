@@ -1,0 +1,19 @@
+<h2><%= t('invoices.index.all_sent_to') %> <span class="text-primary"><%= current_recipient.email %></span></h2>
+<hr>
+<% @links.each do |link| %>
+  <div class="row mb-2">
+    <div class="col-6 text-truncate">
+      <%= link.invoice.subject %>
+    </div>
+    <div class="col-3">
+      <%= link.created_at %>
+    </div>
+    <div class="col-3 d-flex">
+      <div class="ml-auto">
+        <%= link_to 'HTML', invoice_path(link.invoice, recipient_id: link.recipient_id), class: 'btn btn-sm btn-secondary' %>
+        <%= link_to 'JSON', invoice_path(link.invoice, recipient_id: link.recipient_id, format: :json), class: 'btn btn-sm btn-secondary' %>
+        <%= link_to 'PDF', invoice_path(link.invoice, recipient_id: link.recipient_id, format: :pdf), class: 'btn btn-sm btn-secondary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

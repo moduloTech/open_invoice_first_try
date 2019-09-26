@@ -10,6 +10,8 @@ module OpenInvoice
   # this controller is not going to process any specific logic
   class HomeController < ApplicationController
 
+    layout 'open_invoice/container'
+
     # one and only :index action here
     # serves html page with project description
     def index

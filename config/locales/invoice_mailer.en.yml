@@ -1,0 +1,8 @@
+en:
+  invoice_mailer:
+    recipient_added:
+      hi: Hi, you received an invoice from
+      subject: Subject
+      follow: To view/download it use the following link
+      link: Invoice
+      addressed: This invoice was also addressed to

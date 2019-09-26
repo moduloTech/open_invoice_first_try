@@ -4,38 +4,47 @@ require 'active_model/model'
 
 module OpenInvoice
 
-  # method to retrieve default configuration
-  # result is a hash
-  def self.defaults
-    # build default config file name
-    file = Engine.root.join('config', 'open_invoice.yml')
-    # parse yml file
-    YAML.load_file(file)
-  end
+  class << self
 
-  # cached configuration instance
-  def self.config
-    # initialize config instance with default settings
-    @config ||= Configuration.new(defaults)
-  end
+    # method to retrieve default configuration
+    # result is a hash
+    def defaults
+      # build default config file name
+      file = Engine.root.join('config', 'open_invoice.yml')
+      # parse yml file
+      YAML.load_file(file)
+    end
 
-  # root method to load the engine
-  # most fragile parts are loaded after this method
-  # when using the engine one should call it even not changing the default config:
-  # OpenInvoice.configure
-  def self.configure
-    # allow to configure the engine
-    yield(config) if block_given?
+    # cached configuration instance
+    def config
+      # initialize config instance with default settings
+      @config ||= Configuration.new(defaults)
+    end
 
-    # validate config and raise if it is invalid
-    raise ConfigurationInvalid.new(config) unless config.valid?
+    # root method to load the engine
+    # most fragile parts are loaded after this method
+    # when using the engine one MUST call it even not changing the default config:
+    # OpenInvoice.configure
+    def configure
+      # allow to configure the engine
+      yield(config) if block_given?
 
-    # load orm. stub for future development
-    require "open_invoice/orm/#{config.orm}"
-    # load application record for engine's models
-    require_relative 'application_record'
-    # load carrierwave configuration
-    require_relative 'carrier_wave_configure'
+      # validate config and raise if it is invalid
+      raise ConfigurationInvalid.new(config) unless config.valid?
+
+      # load orm. stub for future development
+      require "open_invoice/orm/#{config.orm}"
+      # load application record for engine's models
+      require_relative 'application_record'
+      # load carrierwave configuration
+      require_relative 'carrier_wave_configure'
+      # load application mailer for engine's mailers
+      require_relative 'application_mailer'
+    end
+
+    # shorthand for app_name
+    delegate :app_name, to: :config
+
   end
 
   # Author: varaby_m@modulotech.fr
@@ -59,6 +68,7 @@ module OpenInvoice
     validates :orm_base, presence: true
 
     # orm class helper
+    # @return [Class]
     def orm_base_class
       orm_base.constantize
     end
@@ -94,19 +104,64 @@ module OpenInvoice
     validates :storage, inclusion: { in: SUPPORTED_STORAGE }
 
     # helper to check if aws is used
+    # @return [Boolean]
     def storage_aws?
       storage.present? && storage.to_sym == :aws
     end
 
+    ### Mailer options
+
+    # mailer base class string "::ActionMailer"
+    attr_accessor :mailer_base
+    # mailer default from field "no-reply@local.dev"
+    attr_writer :mailer_default_from
+
+    # mailer class helper
+    # @return [Class]
+    def mailer_base_class
+      mailer_base.constantize
+    end
+
+    # default from helper. avoids nil result
+    # @return [String]
+    def mailer_default_from
+      @mailer_default_from || "#{app_name} <no-reply@#{domain}>"
+    end
+
+    attr_accessor :mailer_layout
+
+    validates :mailer_base, :mailer_default_from, :mailer_layout, presence: true
+
     ### General options
+
+    DEFAULT_DOMAIN = 'local.dev'
+    DEFAULT_NAME = 'Open Invoice'
 
     # option to allow errors slip through catchers and raise at the root level
     attr_accessor :raise_in_development
+    # option to be the domain of the app "example.com"
+    attr_writer :domain
+    # option to be the host of the app "https://www.example.com"
+    attr_accessor :host
+    # option to serve as app name for custom installs
+    attr_accessor :app_name
+    # option to catch all errors inside engines root controller or not
+    attr_accessor :catch_engine_errors
 
     # helper for raise_in_development
+    # @return [Boolean]
     def raise_in_development?
       @raise_in_development.present?
     end
+
+    # app domain
+    # @return [String]
+    def domain
+      @domain || DEFAULT_DOMAIN
+    end
+
+    # require domain, host, app_name to be present
+    validates :app_name, :domain, :host, presence: true
 
   end
 

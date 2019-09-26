@@ -10,7 +10,11 @@ module OpenInvoice
 
     included do
       rails_admin do
+        # icon for left menu
         navigation_icon 'fa fa-user-md mr-2'
+
+        # this method is used for labels in rails_admin
+        object_label_method { :email }
       end
     end
 

@@ -10,6 +10,7 @@ module OpenInvoice
 
     included do
       rails_admin do
+        # icon for left menu
         navigation_icon 'fa fa-briefcase mr-2'
 
         # when new record
@@ -18,7 +19,16 @@ module OpenInvoice
           configure :secure_key do
             default_value { SecureRandom.hex(10) }
           end
+
+          # exclude associated fields
+          exclude_fields :links, :visits, :recipients
         end
+
+        # this method is used for labels in rails_admin
+        object_label_method { :id }
+
+        # exclude associated fields
+        exclude_fields :links, :visits, :recipients
       end
     end
 

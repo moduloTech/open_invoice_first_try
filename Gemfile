@@ -13,6 +13,8 @@ gem 'devise', '~> 4.7'
 gem 'puma', '~> 4.1'
 gem 'pg', '~> 1.1'
 gem 'rails_admin', '~> 2.0'
+gem 'hiredis', '~> 0.6'
+gem 'redis', '~> 4.1'
 
 group :development, :test do
   gem 'rubocop', '~> 0.74', require: false
@@ -20,7 +22,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   # gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'database_cleaner'

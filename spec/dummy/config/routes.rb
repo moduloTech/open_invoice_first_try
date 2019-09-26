@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   # mount rails admin engine
   mount RailsAdmin::Engine => '/admins', :as => 'rails_admin'
 
+  # send invoices endpoint
+  resources :recipients, only: :create
   # resources for welcome controller
   resources :welcome, only: :index
 end

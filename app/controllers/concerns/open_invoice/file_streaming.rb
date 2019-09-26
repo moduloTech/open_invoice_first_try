@@ -3,12 +3,15 @@
 module OpenInvoice
 
   # Author: varaby_m@modulotech.fr
+  # module to help file streaming
   module FileStreaming
 
     private
 
     # method to transfer file data from aws object
     # in development uses send_file from local file
+    # @param [CarrierWave::Uploader::Base] carrierwave_file_attribute
+    # @param [Boolean] inline
     def stream_file(carrierwave_file_attribute, inline=false)
       # CarrierWave::Storage::AWSFile (or CarrierWave::SanitizedFile for dev)
       aws_file = carrierwave_file_attribute.file

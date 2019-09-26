@@ -17,3 +17,5 @@ CarrierWave.configure do |config|
   # link expires in 5 minutes
   config.aws_authenticated_url_expiration = 5.minutes.to_i
 end
+
+Dir[OpenInvoice::Engine.root.join('app/uploaders/open_invoice/*.rb')].each(&method(:require))

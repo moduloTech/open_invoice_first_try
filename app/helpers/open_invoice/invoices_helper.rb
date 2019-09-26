@@ -7,7 +7,8 @@ module OpenInvoice
   module InvoicesHelper
 
     # this function compares due date with current date/time
-    # and returns bootstrap 4 text color class
+    # @param [OpenInvoice::Invoice] invoice
+    # @return [String] bootstrap 4 text color class
     # less than 3 days to due date - orange = text-warning
     # less than 1 day to due date - red = text-danger
     def due_date_color(invoice)

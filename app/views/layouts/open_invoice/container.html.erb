@@ -1,7 +1,12 @@
 <% content_for :open_invoice_nested_layout do %>
-  <div class="container">
+  <header>
+    <%= render partial: 'open_invoice/header/nav' %>
+  </header>
+
+  <main class="container mt-3">
+    <%= render partial: 'open_invoice/header/flash' %>
     <%= yield %>
-  </div>
+  </main>
 <% end %>
 
 <%= render template: 'layouts/open_invoice/application' %>

@@ -6,7 +6,8 @@ module OpenInvoice
   # Root controller for OpenInvoice engine
   class ApplicationController < ::ApplicationController
 
-    include ErrorHandling
+    include(ErrorHandling) if OpenInvoice.config.catch_engine_errors
+    include Authenticating
 
     # pure layout with vendor styles and js
     layout 'open_invoice/application'

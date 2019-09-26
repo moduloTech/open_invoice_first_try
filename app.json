@@ -14,9 +14,15 @@
     "postdeploy": "./r.sh"
   },
   "env": {
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
-      "generator": "secret"
+    "OPEN_INVOICE_APP_NAME": {
+      "description": "Name of you app instance.",
+      "value": "Open Invoice"
+    },
+    "OPEN_INVOICE_HOST": {
+      "description": "Host of you app. Should be set to http(s?)://<your-app-name>.herokuapp.com. Set to your custom host if you plan to have one. Example: https://open-invoice.herokuapp.com"
+    },
+    "OPEN_INVOICE_DOMAIN": {
+      "description": "Domain of you app. Should be set to <your-app-name>.herokuapp.com. Set to your custom domain if you plan to have one. Example: open-invoice.herokuapp.com"
     },
     "WEB_CONCURRENCY": {
       "description": "The number of processes to run.",
@@ -37,6 +43,14 @@
     {
       "plan": "cloudcube:free",
       "as": "CLOUDCUBE"
+    },
+    {
+      "plan": "sendgrid:starter",
+      "as": "SENDGRID"
+    },
+    {
+      "plan": "heroku-redis:hobby-dev",
+      "as": "REDIS"
     }
   ],
   "buildpacks": [

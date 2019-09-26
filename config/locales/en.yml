@@ -1,2 +1,4 @@
 en:
-  app_name: Open Invoice
+  not_authorized: Not authorized
+  close: Close
+  nav_toggle: Toggle navigation

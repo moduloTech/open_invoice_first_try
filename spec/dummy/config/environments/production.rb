@@ -62,12 +62,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "dummy_production"
 
-  config.action_mailer.perform_caching = false
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -112,4 +106,20 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context =
   #   ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # mailer settings
+  # delivery method :smtp
+  config.action_mailer.delivery_method = :smtp
+  # allow to deliver emails
+  config.action_mailer.perform_deliveries = true
+  # smtp settings
+  config.action_mailer.smtp_settings = {
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    domain:               ENV['SMTP_DOMAIN'],
+    address:              ENV['SMTP_ADDRESS'],
+    port:                 ENV['SMTP_PORT'],
+    authentication:       :plain,
+    enable_starttls_auto: ENV['SMTP_START_TLS'] == 'true'
+  }
 end
