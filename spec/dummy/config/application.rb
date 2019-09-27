@@ -25,11 +25,6 @@ module Dummy
     # Initialize configuration defaults.
     config.load_defaults 6.0
 
-    # configure redis server url
-    redis_url = ENV.fetch('REDIS_URL') { 'redis://localhost:6379/0' }
-    # set cache store to redis
-    config.cache_store = :redis_cache_store, { url: redis_url, driver: :hiredis }
-
   end
 
 end

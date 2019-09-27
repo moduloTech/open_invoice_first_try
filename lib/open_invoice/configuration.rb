@@ -136,6 +136,10 @@ module OpenInvoice
 
     DEFAULT_DOMAIN = 'local.dev'
     DEFAULT_NAME = 'Open Invoice'
+    SUPPORTED_SESSION_STORE = %i[cache_store cookie_store mem_cache_store
+                                 active_record_store].freeze
+    SUPPORTED_CACHE_STORE = %i[file_store mem_cache_store memory_store null_store
+                               redis_cache_store].freeze
 
     # option to allow errors slip through catchers and raise at the root level
     attr_accessor :raise_in_development
@@ -147,6 +151,8 @@ module OpenInvoice
     attr_accessor :app_name
     # option to catch all errors inside engines root controller or not
     attr_accessor :catch_engine_errors
+    # option to choose storage for session and cache
+    attr_accessor :dummy_session_store, :dummy_cache_store
 
     # helper for raise_in_development
     # @return [Boolean]
@@ -162,6 +168,11 @@ module OpenInvoice
 
     # require domain, host, app_name to be present
     validates :app_name, :domain, :host, presence: true
+    # require stores
+    validates :dummy_session_store, :dummy_cache_store, presence: true
+    # validate stores against whitelist
+    validates :dummy_session_store, inclusion: { in: SUPPORTED_SESSION_STORE }
+    validates :dummy_cache_store, inclusion: { in: SUPPORTED_CACHE_STORE }
 
   end
 

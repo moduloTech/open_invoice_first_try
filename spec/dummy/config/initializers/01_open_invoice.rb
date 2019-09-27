@@ -32,4 +32,7 @@ OpenInvoice.configure do |config|
   require 'application_mailer'
 
   config.catch_engine_errors = false
+
+  config.dummy_cache_store = ENV['OPEN_INVOICE_CACHE_STORE'].to_sym if ENV['OPEN_INVOICE_CACHE_STORE']
+  config.dummy_session_store = ENV['OPEN_INVOICE_SESSION_STORE'].to_sym if ENV['OPEN_INVOICE_SESSION_STORE']
 end

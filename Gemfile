@@ -14,8 +14,11 @@ gem 'puma', '~> 4.1'
 gem 'pg', '~> 1.1'
 gem 'rails_admin', '~> 2.0'
 gem 'rest-client', '~> 2.1'
-gem 'hiredis', '~> 0.6'
-gem 'redis', '~> 4.1'
+
+# storages for cache and session
+gem 'hiredis', '~> 0.6', require: false
+gem 'redis', '~> 4.1', require: false
+gem 'activerecord-session_store', '~> 1.1', require: false
 
 group :development, :test do
   gem 'rubocop', '~> 0.74', require: false
