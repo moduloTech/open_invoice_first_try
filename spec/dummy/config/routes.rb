@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   # send invoices endpoint
   resources :recipients, only: :create
+  # check version endpoint
+  resources :check_version, only: :index
   # resources for welcome controller
   resources :welcome, only: :index
 end

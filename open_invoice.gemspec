@@ -9,10 +9,10 @@ require 'open_invoice/version'
 Gem::Specification.new do |spec|
   spec.name        = 'open_invoice'
   spec.version     = OpenInvoice::VERSION
-  spec.authors     = ['Mikhail Varabyou']
-  spec.email       = ['varaby_m@modulotech.fr']
+  spec.authors     = ['moduloTech']
+  spec.email       = ['philib_j@modulotech.fr']
   spec.homepage    = 'https://open-invoice.io'
-  spec.summary     = 'Summary of OpenInvoice.'
+  spec.summary     = 'OpenInvoice Rails engine provides easy way to manage invoices.'
   spec.description = 'Description of OpenInvoice.'
   spec.license     = 'MIT'
 

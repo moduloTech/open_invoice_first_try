@@ -33,3 +33,5 @@ module Dummy
   end
 
 end
+
+require_relative '../lib/version'

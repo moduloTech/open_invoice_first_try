@@ -1,0 +1,34 @@
+<% if version.outdated? %>
+  <div class="alert alert-dismissible alert-warning">
+    <button class="close" data-dismiss="alert" type="button">×</button>
+
+    <p class="h3" style="margin-top: 0">
+      <span class="fa fa-exclamation-triangle">&nbsp;</span>
+      <%= t('check_version.outdated') %>
+    </p>
+
+    <p>
+      <%= t('check_version.current') %>
+      <b><%= Dummy::VERSION %></b>.
+      <%= t('check_version.latest') %>
+      <b><%= version.remote_version %></b>.
+      <%= link_to t('check_version.view'), '#changes', data: { toggle: :collapse } %>
+    </p>
+    <div id="changes" class="collapse">
+      <% version.missing_changes.each do |version_number, changes| %>
+        <div class="row" style="margin-top: 8px;">
+          <div class="col-sm-1">
+            <b><%= version_number %>:</b>
+          </div>
+          <div class="col-sm-11">
+            <ul style="margin-bottom: 0">
+              <% changes.each do |change| %>
+                <li><%= change %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

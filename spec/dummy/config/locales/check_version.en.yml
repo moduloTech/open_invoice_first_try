@@ -1,0 +1,6 @@
+en:
+  check_version:
+    outdated: Your application is outdated.
+    current: You are using version
+    latest: Latest version is
+    view: View changes

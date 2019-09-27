@@ -13,6 +13,7 @@ gem 'devise', '~> 4.7'
 gem 'puma', '~> 4.1'
 gem 'pg', '~> 1.1'
 gem 'rails_admin', '~> 2.0'
+gem 'rest-client', '~> 2.1'
 gem 'hiredis', '~> 0.6'
 gem 'redis', '~> 4.1'
 

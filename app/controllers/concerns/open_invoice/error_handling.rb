@@ -25,6 +25,8 @@ module OpenInvoice
         case error
         when ActionController::ParameterMissing
           [:unprocessable_entity, error.message]
+        when ActionController::UnknownFormat
+          [:not_accepted, error.message]
         else
           #     for production
           msg = if Rails.env.production?
@@ -57,8 +59,10 @@ module OpenInvoice
         end
         # when format :pdf or :html
         format.any(:pdf, :html) do
+          # retrieve code for status symbol. e.g. 404 for :not_found
+          status_code = Rack::Utils::SYMBOL_TO_STATUS_CODE[status]
           # write error to flash
-          flash[:danger] = message
+          flash[:danger] = "[#{status_code}] #{message}"
           # redirect back
           redirect_back(fallback_location: '/')
         end

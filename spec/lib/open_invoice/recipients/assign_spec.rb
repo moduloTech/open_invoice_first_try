@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Author: varaby_m@modulotech.fr
-RSpec.describe OpenInvoice::Recipients::Assign do
+RSpec.describe OpenInvoice::Recipients::Assign, type: :model do
   include ActiveJob::TestHelper
 
   describe '::call' do
