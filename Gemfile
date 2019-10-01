@@ -25,6 +25,12 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.3', require: false
 end
 
+group :development do
+  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano-rvm', '~> 0.1.2', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
+end
+
 group :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   # gem 'rails-controller-testing'
