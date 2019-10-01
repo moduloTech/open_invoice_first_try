@@ -11,7 +11,7 @@ set :repo_url, 'git@github.com:moduloTech/open_invoice.git'
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
 # Default value for :format is :airbrussh.
-# set :format, :airbrussh
+# set :format, :pretty
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
@@ -21,7 +21,7 @@ set :deploy_to, "/home/deploy/#{fetch :application}"
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml"
+append :linked_files, 'spec/dummy/config/database.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
@@ -37,9 +37,3 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-task :yarn_install do
-  `yarn install`
-end
-
-before 'deploy:assets:precompile', :yarn_install
