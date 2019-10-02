@@ -49,3 +49,5 @@ set :puma_error_log, "#{shared_path}/spec/dummy/log/puma.access.log"
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
+
+set :nginx_sites_available_path, "#{release_path}/spec/dummy/config/nginx"
