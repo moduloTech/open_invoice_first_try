@@ -17,9 +17,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
 
   spec.files = Dir[
-    'app/**/*',
-    'config/routes.rb', 'config/open_invoice.yml', 'config/locales/**/*.yml',
-    'lib/open_invoice.rb', 'lib/tasks/**/*.rake', 'lib/open_invoice/**/*.rb',
+    '{app,config,lib}/**/*',
     'MIT-LICENSE', 'Rakefile', 'README.md', 'package.json', 'yarn.lock', 'r.sh'
   ]
 

@@ -29,6 +29,7 @@ group :development do
   gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-rvm', '~> 0.1.2', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano3-puma', '~> 4.0', require: false
 end
 
 group :test do
