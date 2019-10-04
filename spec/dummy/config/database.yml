@@ -1,16 +1,20 @@
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+md5: &md5
   username: open_invoice
   password: 1
 
 development:
   <<: *default
+  <<: *md5
   host: 127.0.0.1
   database: open_invoice_development
 
 test:
   <<: *default
+  <<: *md5
   database: open_invoice_test
   host: 127.0.0.1
 
