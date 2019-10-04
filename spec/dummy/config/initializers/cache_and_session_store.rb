@@ -13,6 +13,7 @@ if OpenInvoice.config.dummy_cache_store == :redis_cache_store
   # set cache store to redis
   Dummy::Application.config.cache_store = :redis_cache_store, { url: redis_url, driver: :hiredis }
 else
+  # use configured value
   Dummy::Application.config.cache_store = OpenInvoice.config.dummy_cache_store
 end
 

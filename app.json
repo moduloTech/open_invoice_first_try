@@ -23,10 +23,6 @@
     },
     "OPEN_INVOICE_DOMAIN": {
       "description": "Domain of you app. Should be set to <your-app-name>.herokuapp.com. Set to your custom domain if you plan to have one. Example: open-invoice.herokuapp.com"
-    },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
-      "value": "5"
     }
   },
   "formation": {
