@@ -30,6 +30,9 @@ group :development do
   gem 'capistrano-rvm', '~> 0.1.2', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano3-puma', '~> 4.0', require: false
+
+  # digital ocean droplet api
+  gem 'droplet_kit', '~> 3.2', require: false
 end
 
 group :test do
