@@ -10,7 +10,7 @@ ruby '2.6.5'
 gemspec
 
 gem 'devise', '~> 4.7'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'pg', '~> 1.1'
 gem 'rails_admin', '~> 2.0'
 gem 'rest-client', '~> 2.1'
