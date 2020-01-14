@@ -11,6 +11,7 @@ module OpenInvoice
     # add initializer for assets precompile
     initializer 'open_invoice.assets.precompile' do |app|
       app.config.assets.paths << root.join('node_modules')
+      app.config.assets.precompile += %w[open_invoice/application.css open_invoice/application.js]
     end
 
     # allow to respond to :pdf

@@ -5,8 +5,8 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@rails/ujs": "^6.0.0-alpha",
-    "bootstrap": "^4.3.1",
+    "@rails/ujs": "^6.0.2",
+    "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "turbolinks": "^5.2.0"
   },
