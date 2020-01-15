@@ -141,6 +141,15 @@ module OpenInvoice
     SUPPORTED_CACHE_STORE = %i[file_store mem_cache_store memory_store null_store
                                redis_cache_store].freeze
 
+    # option to inherit base controller. defaults to "::ApplicationController"
+    attr_accessor :controller_base
+
+    # controller class helper
+    # @return [Class]
+    def controller_base_class
+      controller_base.constantize
+    end
+
     # option to allow errors slip through catchers and raise at the root level
     attr_accessor :raise_in_development
     # option to be the domain of the app "example.com"

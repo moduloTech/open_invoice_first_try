@@ -2,6 +2,7 @@ orm: active_record
 orm_base: '::ApplicationRecord'
 storage: :aws
 dir_prefix: uploads
+controller_base: '::ApplicationController'
 mailer_base: '::ApplicationMailer'
 mailer_layout: open_invoice/mailer
 raise_in_development: true

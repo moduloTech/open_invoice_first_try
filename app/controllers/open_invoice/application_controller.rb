@@ -4,7 +4,7 @@ module OpenInvoice
 
   # Author: varaby_m@modulotech.fr
   # Root controller for OpenInvoice engine
-  class ApplicationController < ::ApplicationController
+  class ApplicationController < OpenInvoice.config.controller_base_class
 
     include(ErrorHandling) if OpenInvoice.config.catch_engine_errors
     include Authenticating
