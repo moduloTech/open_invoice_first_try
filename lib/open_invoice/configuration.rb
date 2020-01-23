@@ -36,10 +36,11 @@ module OpenInvoice
       require "open_invoice/orm/#{config.orm}"
       # load application record for engine's models
       require_relative 'application_record'
-      # load carrierwave configuration
-      require_relative 'carrier_wave_configure'
       # load application mailer for engine's mailers
       require_relative 'application_mailer'
+      # load carrierwave uploaders
+      require 'open_invoice/base_uploader'
+      require 'open_invoice/original_file_uploader'
     end
 
     # shorthand for app_name

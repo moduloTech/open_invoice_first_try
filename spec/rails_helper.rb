@@ -33,6 +33,28 @@ end
 RSpec.configure do |config|
   config.before(:all) do
     DatabaseCleaner.clean_with :truncation
+    CarrierWave.configure do |cw|
+      cw.storage = :file
+      cw.enable_processing = false
+    end
+    OpenInvoice::BaseUploader.prepend(Module.new do
+      extend ActiveSupport::Concern
+
+      included do
+        storage :file
+        cache_storage :file
+      end
+
+      def store_dir
+        Rails.root.join('tmp/uploads')
+      end
+
+      alias_method :cache_dir, :store_dir
+    end)
+  end
+
+  config.after(:all) do
+    FileUtils.rm_rf(Rails.root.join('tmp/uploads'))
   end
 
   config.around(:each) do |example|
