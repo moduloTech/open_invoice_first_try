@@ -1,13 +1,13 @@
 <div class="row mt-3">
   <div class="col-md-6">
-    <% pdf_url = invoice_path(@invoice, recipient_id: current_recipient.id, inline: true, format: :pdf) %>
+    <% pdf_url = invoice_path(@invoice, public_id: current_recipient.public_id, inline: true, format: :pdf) %>
     <%= content_tag :iframe, nil, src: pdf_url, type: 'application/pdf', width: '100%', height: '500px',
                     style: 'border: none;' %>
   </div>
   <div class="col-md-6">
     <div class="row my-1">
       <div class="col">
-        <%= t('activerecord.models.open_invoice/invoice.one') %> <b><%= @invoice.id %></b>
+        <%= @invoice.model_name.human %> <b><%= @invoice.id %></b>
       </div>
     </div>
     <div class="row my-1">
@@ -17,12 +17,12 @@
     </div>
     <div class="row my-1">
       <div class="col">
-        <%= link_to invoice_path(@invoice, recipient_id: current_recipient.id, format: :pdf), target: :blank,
+        <%= link_to invoice_path(@invoice, public_id: current_recipient.public_id, format: :pdf), target: :blank,
                     class: 'btn btn-secondary btn-sm mr-2' do %>
           <%= t('invoices.show.download') %>
           <%= number_to_human_size(@invoice.original_file.size) %>
         <% end %>
-        <%= link_to invoice_path(@invoice, recipient_id: current_recipient.id, format: :json), target: :blank,
+        <%= link_to invoice_path(@invoice, public_id: current_recipient.public_id, format: :json), target: :blank,
                     class: 'btn btn-secondary btn-sm' do %>
           <%= t('invoices.show.json') %>
         <% end %>
@@ -33,7 +33,7 @@
 
     <div class="row my-1">
       <div class="col-md-6 font-weight-bolder">
-        <%= t('activerecord.attributes.open_invoice/invoice.invoice_number') %>
+        <%= @invoice.human_attribute_name(:invoice_number) %>
       </div>
       <div class="col-md-6">
         <%= @invoice.invoice_number %>
@@ -49,7 +49,7 @@
     </div>
     <div class="row my-1">
       <div class="col-md-6 font-weight-bolder">
-        <%= t('activerecord.attributes.open_invoice/invoice.due_date') %>
+        <%= @invoice.human_attribute_name(:due_date) %>
       </div>
       <div class="col-md-6">
         <%= content_tag :span, class: due_date_color(@invoice) do %>
@@ -62,7 +62,7 @@
 
     <div class="row my-1">
       <div class="col-md-6 font-weight-bolder">
-        <%= t('activerecord.attributes.open_invoice/invoice.amount_vat_excluded') %>
+        <%= @invoice.human_attribute_name(:amount_vat_excluded) %>
       </div>
       <div class="col-md-6">
         <%= @invoice.amount_vat_excluded %>
@@ -70,7 +70,7 @@
     </div>
     <div class="row my-1">
       <div class="col-md-6 font-weight-bolder">
-        <%= t('activerecord.attributes.open_invoice/invoice.vat') %>
+        <%= @invoice.human_attribute_name(:vat) %>
       </div>
       <div class="col-md-6">
         <%= @invoice.vat %>
@@ -78,10 +78,28 @@
     </div>
     <div class="row my-1">
       <div class="col-md-6 font-weight-bolder">
-        <%= t('activerecord.attributes.open_invoice/invoice.amount_vat_included') %>
+        <%= @invoice.human_attribute_name(:amount_vat_included) %>
       </div>
       <div class="col-md-6">
         <%= @invoice.amount_vat_included %>
+      </div>
+    </div>
+
+    <hr/>
+
+    <div class="row my-1">
+      <div class="col d-flex align-items-center">
+        <span class="font-weight-bolder">
+          <%= current_recipient.human_attribute_name(:api_token) %>
+        </span>
+        <span class="js-token d-none ml-2">
+          <%= current_recipient.api_token %>
+        </span>
+        <span class="js-token-stars ml-2">
+          &middot;&middot;&middot;&middot;&middot;
+        </span>
+        <%= link_to t('invoices.show.show'), 'javascript:$(".js-token,.js-token-stars").toggleClass("d-none");',
+                    class: 'btn btn-outline-danger btn-sm ml-auto' %>
       </div>
     </div>
   </div>

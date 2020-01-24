@@ -22,3 +22,6 @@ en:
         secure_key: Secure key
       open_invoice/recipient:
         email: Email
+        name: Name
+        public_id: Public ID
+        api_token: API Token

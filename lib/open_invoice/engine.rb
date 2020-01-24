@@ -11,11 +11,11 @@ module OpenInvoice
     # add initializer for assets precompile
     initializer 'open_invoice.assets.precompile' do |app|
       unless app.root.to_s.match root.to_s
-        app.config.assets.paths << root.join('node_modules')
         Dir.chdir(root) do
           `yarn install`
         end
       end
+      app.config.assets.paths << root.join('node_modules')
       app.config.assets.precompile += %w[open_invoice/application.css open_invoice/application.js]
     end
 

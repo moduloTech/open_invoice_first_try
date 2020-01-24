@@ -9,12 +9,12 @@ RSpec.describe OpenInvoice::InvoicesController, type: :controller do
     let(:recipient) { FactoryBot.create(:recipient) }
     let!(:link) { FactoryBot.create(:link, invoice: invoice, recipient: recipient) }
     let(:id) { invoice.id }
-    let(:recipient_id) { recipient.id }
+    let(:public_id) { recipient.public_id }
     let(:format) { :html }
     let(:session) { { open_invoice: {} } }
 
     subject do
-      get(:show, params:  { invoice_id: id, recipient_id: recipient_id, format: format },
+      get(:show, params:  { invoice_id: id, public_id: public_id, format: format },
                  session: session)
     end
 
@@ -40,8 +40,8 @@ RSpec.describe OpenInvoice::InvoicesController, type: :controller do
       it { is_expected.to have_http_status :found }
     end
 
-    context 'when incorrect recipient_id' do
-      let(:recipient_id) { 1 }
+    context 'when incorrect public_id' do
+      let(:public_id) { 1 }
 
       it { is_expected.to have_http_status :found }
     end
@@ -70,8 +70,8 @@ RSpec.describe OpenInvoice::InvoicesController, type: :controller do
         it { is_expected.to have_http_status :unauthorized }
       end
 
-      context 'when incorrect recipient_id' do
-        let(:recipient_id) { 1 }
+      context 'when incorrect public_id' do
+        let(:public_id) { 1 }
 
         it { is_expected.to have_http_status :unauthorized }
       end
@@ -101,15 +101,15 @@ RSpec.describe OpenInvoice::InvoicesController, type: :controller do
         it { is_expected.to have_http_status :found }
       end
 
-      context 'when incorrect recipient_id' do
-        let(:recipient_id) { 1 }
+      context 'when incorrect public_id' do
+        let(:public_id) { 1 }
 
         it { is_expected.to have_http_status :found }
       end
 
       context 'when visit pdf after html within same session' do
         before(:each) do
-          get(:show, params:  { invoice_id: id, recipient_id: recipient_id, format: :html },
+          get(:show, params:  { invoice_id: id, public_id: public_id, format: :html },
                      session: session)
         end
 

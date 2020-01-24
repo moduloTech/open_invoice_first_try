@@ -1,6 +1,13 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "changes": {
+    "0.1.1": [
+      "allow to configure base controller",
+      "configure OpenInvoice uploaders, not global CarrierWave",
+      "add public_id and api_token uuids to recipients",
+      "recipient links are now authenticated with public_id instead of id",
+      "show recipient api_token in show.html and show.json"
+    ],
     "0.1.0": [
       "added update-checker for dummy app"
     ]

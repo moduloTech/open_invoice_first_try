@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_123812) do
+ActiveRecord::Schema.define(version: 2020_01_23_145553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,7 +57,11 @@ ActiveRecord::Schema.define(version: 2019_09_17_123812) do
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.uuid "public_id", default: -> { "gen_random_uuid()" }, null: false
+    t.uuid "api_token", default: -> { "gen_random_uuid()" }, null: false
+    t.index ["api_token"], name: "index_open_invoice_recipients_on_api_token", unique: true
     t.index ["email"], name: "index_open_invoice_recipients_on_email", unique: true
+    t.index ["public_id"], name: "index_open_invoice_recipients_on_public_id", unique: true
   end
 
   create_table "open_invoice_visits", force: :cascade do |t|

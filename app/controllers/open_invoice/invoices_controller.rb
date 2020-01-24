@@ -53,7 +53,7 @@ module OpenInvoice
     # this method requires current_recipient to be already authenticated
     def index
       # find all links to assigned invoices
-      @links = current_recipient.links.includes(:invoice)
+      @links = current_recipient.links.includes(:invoice, :recipient)
 
       # only respond to html and json formats
       respond_to do |format|
@@ -67,15 +67,17 @@ module OpenInvoice
     def authenticate_invoice
       # invoice id
       invoice_id = params.require(:invoice_id)
-      # recipient id
-      recipient_id = params.require(:recipient_id)
+      # recipient public id
+      public_id = params.require(:public_id)
+      # all links
+      links = Link.to_adapter.find_all(invoice_id: invoice_id).includes(:recipient)
       # link
-      @link = Link.to_adapter.find_first(recipient_id: recipient_id, invoice_id: invoice_id)
+      @link = links.find { |link| link.recipient.public_id == public_id }
       # when link not found - invoice not found
       return unless @link
 
       # if recipient is already authenticated use it
-      recipient = current_recipient if current_recipient&.id == recipient_id
+      recipient = current_recipient if current_recipient&.public_id == public_id
       # load recipient if not current
       recipient ||= @link.recipient
       # when recipient was not found exit

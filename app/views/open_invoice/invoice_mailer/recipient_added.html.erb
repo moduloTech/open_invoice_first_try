@@ -6,7 +6,7 @@
 <p><%= t('invoice_mailer.recipient_added.follow') %>:</p>
 <p class="text-center">
   <%= link_to t('invoice_mailer.recipient_added.link').upcase,
-              invoice_url(@invoice, recipient_id: @recipient.id), class: 'btn btn-primary',
+              invoice_url(@invoice, public_id: @recipient.public_id), class: 'btn btn-primary',
               target: '_blank' %>
 </p>
 <% if @other.present? %>

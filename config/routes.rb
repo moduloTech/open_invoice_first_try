@@ -3,7 +3,7 @@
 # Author: varaby_m@modulotech.fr
 # OpenInvoice engine routes
 OpenInvoice::Engine.routes.draw do
-  scope ':recipient_id' do
+  scope ':public_id' do
     # invoices endpoint to login and view invoice
     resources :invoices, only: :show, param: :invoice_id
   end

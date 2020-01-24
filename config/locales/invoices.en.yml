@@ -5,6 +5,8 @@ en:
       json: View as JSON
       not_found: Invoice %{uuid} was not found
       assigned: Assigned at
+      show: Show/Hide
+      copy: Copy
     index:
       all_sent_to: All invoices sent to
       link: All invoices

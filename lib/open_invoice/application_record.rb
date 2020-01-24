@@ -9,6 +9,9 @@ module OpenInvoice
     # mark it as abstract class
     self.abstract_class = true
 
+    # make class methods simple
+    delegate :arel_table, :human_attribute_name, to: :class
+
   end
 
 end
