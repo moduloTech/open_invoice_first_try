@@ -8,8 +8,11 @@ OpenInvoice::Engine.routes.draw do
     resources :invoices, only: :show, param: :invoice_id
   end
 
+  # admin (owner) endpoints
   namespace :adm do
+    # create invoices
     resources :invoices, only: :create do
+      # and send 'em
       resource :send, only: :create
     end
   end

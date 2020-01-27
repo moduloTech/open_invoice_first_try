@@ -69,6 +69,8 @@ module OpenInvoice
       end
     end
 
+    # @param [ActiveRecord::Base, #errors] record
+    # @param [String, Symbol] status
     def respond_with_record(record, status: :unprocessable_entity)
       respond_with_error(status, record.errors.full_messages.join('. '))
     end
