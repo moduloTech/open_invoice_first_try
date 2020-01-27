@@ -8,6 +8,12 @@ OpenInvoice::Engine.routes.draw do
     resources :invoices, only: :show, param: :invoice_id
   end
 
+  namespace :adm do
+    resources :invoices, only: :create do
+      resource :send, only: :create
+    end
+  end
+
   # list of invoices for authenticated recipient
   resources :invoices, only: :index, as: :auth_invoices
 

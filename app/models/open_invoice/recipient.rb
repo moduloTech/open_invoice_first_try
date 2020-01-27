@@ -21,27 +21,19 @@ module OpenInvoice
     validates :public_id, uniqueness: true, if: :public_id_changed?
     validates :api_token, uniqueness: true, if: :api_token_changed?
 
-    after_initialize :generate_unique_keys, if: :new_record?
+    after_initialize :regenerate_public_id, if: :new_record?
+    after_initialize :regenerate_api_token, if: :new_record?
 
     def to
       "#{name} <#{email}>"
     end
 
-    private
+    def regenerate_public_id
+      generate_uuid_token(:public_id)
+    end
 
-    def generate_unique_keys
-      loop do
-        self.public_id = SecureRandom.uuid
-        self.api_token = SecureRandom.uuid
-
-        duplicates = self.class.where(
-          arel_table[:public_id].eq(public_id).or(
-            arel_table[:api_token].eq(api_token)
-          )
-        ).any?
-
-        break unless duplicates
-      end
+    def regenerate_api_token
+      generate_uuid_token(:api_token)
     end
 
   end

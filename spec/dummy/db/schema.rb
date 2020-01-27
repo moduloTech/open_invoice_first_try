@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_145553) do
+ActiveRecord::Schema.define(version: 2020_01_27_052155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "open_invoice_admin_tokens", force: :cascade do |t|
+    t.string "name", null: false
+    t.uuid "token", default: -> { "gen_random_uuid()" }, null: false
+    t.datetime "expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "open_invoice_admins", force: :cascade do |t|
     t.string "email", default: "", null: false
