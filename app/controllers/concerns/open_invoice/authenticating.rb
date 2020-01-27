@@ -25,17 +25,26 @@ module OpenInvoice
     # @return [OpenInvoice::Recipient, NilClass]
     def current_recipient
       # initialize recipient if nil
-      @current_recipient ||= begin
-        # take recipient_id from session
-        recipient_id = open_invoice_session[:recipient_id]
-        # if recipient id is present try to retrieve the recipient from db
-        # else assigns :none symbol
-        recipient_id && Recipient.to_adapter.get(recipient_id) || :none
-      end
-
+      @current_recipient ||= headers_recipient || session_recipient || :none
       # if stored value is :none - return nil
       # else return instance of Recipient
       @current_recipient == :none ? nil : @current_recipient
+    end
+
+    # loads recipient by api token from headers.
+    # @return [OpenInvoice::Recipient, NilClass]
+    def headers_recipient
+      # get token from headers
+      api_token = request.headers[:Authentication]
+      # if header is present try to retrieve the recipient from db
+      Recipient.to_adapter.find_first(api_token: api_token) if api_token
+    end
+
+    def session_recipient
+      # take recipient_id from session
+      recipient_id = open_invoice_session[:recipient_id]
+      # if recipient id is present try to retrieve the recipient from db
+      Recipient.to_adapter.get(recipient_id) if recipient_id
     end
 
     # method to assign current_recipient and store recipient's id to session
@@ -58,7 +67,7 @@ module OpenInvoice
       message = I18n.t('not_authorized')
       respond_to do |format|
         # for json render unauthorized and error message
-        format.json { render status: :unauthorized, message: message }
+        format.json { render status: :unauthorized, json: { message: message } }
         format.all do
           # for any other format add error message to flash
           flash[:danger] = message
