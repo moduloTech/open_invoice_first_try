@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe WelcomeController, type: :controller do
   subject { get :index }
 

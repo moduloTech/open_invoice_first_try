@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 FactoryBot.define do
   factory :invoice, class: 'OpenInvoice::Invoice' do
     amount_vat_excluded { 100 }

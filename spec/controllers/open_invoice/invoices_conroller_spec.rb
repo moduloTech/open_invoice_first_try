@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe OpenInvoice::InvoicesController, type: :controller do
   routes { OpenInvoice::Engine.routes }
 
@@ -124,8 +123,24 @@ RSpec.describe OpenInvoice::InvoicesController, type: :controller do
     let!(:invoice2) { FactoryBot.create(:invoice) }
     let(:recipient) { FactoryBot.create(:recipient) }
     let(:session) { { open_invoice: { recipient_id: recipient.id } } }
-    subject { get :index, session: session }
+    let(:headers) { {} }
+    subject do
+      @request.headers.merge!(headers)
+      get :index, session: session, format: :json
+    end
 
     it { is_expected.to have_http_status :ok }
+
+    context 'when no session' do
+      let(:session) { nil }
+
+      it { is_expected.to have_http_status :unauthorized }
+
+      context 'with recipients.api_token' do
+        let(:headers) { { Authentication: recipient.api_token } }
+
+        it { is_expected.to have_http_status :ok }
+      end
+    end
   end
 end

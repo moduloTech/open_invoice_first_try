@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 module OpenInvoice
 
   # link model allows recipient to the invoice

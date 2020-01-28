@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # code coverage for specs
 if ENV.fetch('CODE_COVERAGE', false)
   require 'simplecov'

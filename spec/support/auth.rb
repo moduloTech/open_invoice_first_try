@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.shared_context :auth do
   let(:admin) { FactoryBot.create(:admin) }
 end

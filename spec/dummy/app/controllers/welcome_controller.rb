@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # this controller is used as an entry for newly installed app
 # when using one-click-deploy feature
 class WelcomeController < ApplicationController

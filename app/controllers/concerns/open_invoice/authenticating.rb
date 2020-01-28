@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # helper functions for invoices endpoints that require invoice's authentication
   module Authenticating
 

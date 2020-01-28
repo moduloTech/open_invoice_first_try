@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # model to store invoice information
   class Invoice < ApplicationRecord
 

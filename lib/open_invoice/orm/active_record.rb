@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # this file is used to prepare engine's ORM ActiveRecord
 
 # load orm adapter for active_record

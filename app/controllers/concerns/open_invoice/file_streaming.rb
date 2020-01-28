@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # module to help file streaming
   module FileStreaming
 

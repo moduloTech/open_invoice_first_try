@@ -3,7 +3,6 @@
 require 'check_version'
 require 'support/rest_version'
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe CheckVersion, type: :model do
   include_context :rest_version
   let(:version) { '0.0.3' }

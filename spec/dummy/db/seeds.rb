@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # post-deploy db setup
 
 # find admin with email "admin@admin" or init new record

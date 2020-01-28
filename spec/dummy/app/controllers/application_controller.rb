@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # dummy app root controller
 class ApplicationController < ActionController::Base
 

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.shared_context :rest_version do
   let(:remote_version) { '0.0.5' }
 

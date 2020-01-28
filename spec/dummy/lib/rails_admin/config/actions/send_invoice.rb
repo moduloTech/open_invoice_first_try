@@ -9,7 +9,6 @@ module RailsAdmin
 
     module Actions
 
-      # Author: varaby_m@modulotech.fr
       # custom action send_invoice for rails_admin
       # serves the page with ability to build list of recipients and bulk
       # send them emails with link

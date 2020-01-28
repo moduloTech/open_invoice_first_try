@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # this class should map cloudcube's heroku credentials to open-invoice config
 # to allow carrierwave use aws to store files
 class CloudCube

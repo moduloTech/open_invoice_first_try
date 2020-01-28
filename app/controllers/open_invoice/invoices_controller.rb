@@ -4,7 +4,6 @@ require_dependency 'open_invoice/application_controller'
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # invoices controller allows to access invoices by uuid
   class InvoicesController < ApplicationController
 

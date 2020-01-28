@@ -2,7 +2,6 @@
 
 require 'rest-client'
 
-# Author: varaby_m@modulotech.fr
 # check remote version of dummy app and compare with current running dummy version
 class CheckVersion
 

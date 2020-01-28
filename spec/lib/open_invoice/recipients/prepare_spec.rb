@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe OpenInvoice::Recipients::Prepare, type: :model do
   describe '::call' do
     let(:email) { 'new@user.mail' }

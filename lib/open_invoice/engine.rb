@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # openinvoice rails engine entry
   class Engine < ::Rails::Engine
 

@@ -2,7 +2,6 @@
 
 require 'support/auth'
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe RecipientsController, type: :controller do
   let(:invoice) { FactoryBot.create(:invoice) }
   let(:email) { 'new@user.mail' }

@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # extension of links model for rails_admin
   module LinksAdmin
 

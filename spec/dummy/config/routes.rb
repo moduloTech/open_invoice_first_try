@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # routes for dummy app
 Rails.application.routes.draw do
   # mount engine at /open_invoice endpoint

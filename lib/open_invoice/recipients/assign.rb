@@ -4,7 +4,6 @@ module OpenInvoice
 
   module Recipients
 
-    # Author: varaby_m@modulotech.fr
     # assign invoice to the recipients
     # creates link between invoice and recipient (if not present)
     # optionally sends notification email to the recipient

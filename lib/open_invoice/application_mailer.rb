@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # base open invoice mailer
   class ApplicationMailer < OpenInvoice.config.mailer_base_class
 

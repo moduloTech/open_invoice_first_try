@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # helpers for invoices html endpoints
   module InvoicesHelper
 

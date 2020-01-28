@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # initializer for session_store and cache_store of dummy app
 
 # when redis cache store is used

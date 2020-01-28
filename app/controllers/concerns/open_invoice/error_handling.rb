@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # module implements handling of exceptions in the application controller
   module ErrorHandling
 

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 module OpenInvoice
 
   class BaseUploader < CarrierWave::Uploader::Base

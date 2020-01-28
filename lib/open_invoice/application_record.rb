@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # base model for OpenInvoice engine
   class ApplicationRecord < OpenInvoice.config.orm_base_class
 

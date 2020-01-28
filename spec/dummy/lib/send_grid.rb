@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # this class should map sendgrid's heroku credentials to dummy config
 # to allow dummy send mails
 class SendGrid

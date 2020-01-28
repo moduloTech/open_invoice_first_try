@@ -4,7 +4,6 @@ module OpenInvoice
 
   module Recipients
 
-    # Author: varaby_m@modulotech.fr
     # prepare recipient list from array of hashes
     # should have :email and :name (for new recipients) populated
     # elements with missing email are skipped

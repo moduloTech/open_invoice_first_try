@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # Root controller for OpenInvoice engine
   class ApplicationController < OpenInvoice.config.controller_base_class
 

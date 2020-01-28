@@ -3,7 +3,6 @@
 require 'support/auth'
 require 'support/rest_version'
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe CheckVersionController, type: :controller do
   include_context :login_admin
   include_context :rest_version

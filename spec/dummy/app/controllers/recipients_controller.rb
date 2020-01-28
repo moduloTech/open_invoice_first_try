@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 # recipients controller implements recipients processing for rails_admin
 # custom actions
 class RecipientsController < ApplicationController

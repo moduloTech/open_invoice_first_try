@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Author: varaby_m@modulotech.fr
 RSpec.describe OpenInvoice::HomeController, type: :controller do
   routes { OpenInvoice::Engine.routes }
 

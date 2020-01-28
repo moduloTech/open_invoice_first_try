@@ -48,7 +48,6 @@ module OpenInvoice
 
   end
 
-  # Author: varaby_m@modulotech.fr
   # configuration instance for OpenInvoice engine
   class Configuration
 

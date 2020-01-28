@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # recipient information to whom we send an invoice
   class Recipient < ApplicationRecord
 

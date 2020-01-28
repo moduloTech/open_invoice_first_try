@@ -2,7 +2,6 @@
 
 require 'check_version'
 
-# Author: varaby_m@modulotech.fr
 class CheckVersionController < ApplicationController
 
   # devise admin should be authenticated

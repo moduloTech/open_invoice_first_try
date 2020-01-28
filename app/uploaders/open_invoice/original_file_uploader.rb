@@ -2,7 +2,6 @@
 
 module OpenInvoice
 
-  # Author: varaby_m@modulotech.fr
   # uploader for invoice's original file
   class OriginalFileUploader < BaseUploader
 
