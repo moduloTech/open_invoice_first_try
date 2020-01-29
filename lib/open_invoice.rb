@@ -10,6 +10,7 @@ require 'open_invoice/recipients/assign'
 require 'open_invoice/recipients/prepare'
 require 'open_invoice/invoices/create'
 require 'open_invoice/invoices/send'
+require 'open_invoice/invoices/list'
 
 module OpenInvoice
   # Your code goes here...

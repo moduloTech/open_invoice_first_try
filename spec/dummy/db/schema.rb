@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_052155) do
+ActiveRecord::Schema.define(version: 2020_01_29_032533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_052155) do
     t.string "secure_key", limit: 20, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["created_at"], name: "index_open_invoice_invoices_on_created_at"
   end
 
   create_table "open_invoice_links", force: :cascade do |t|

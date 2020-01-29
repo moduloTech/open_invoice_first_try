@@ -12,7 +12,6 @@ RSpec.describe OpenInvoice::Invoices::Send do
 
   subject { OpenInvoice::Invoices::Send.call(invoice, recipients) }
 
-
   it 'creates links recipients to invoice' do
     expect { subject }.to change { invoice.recipients.reload.count }.from(0).to(2)
   end

@@ -2,18 +2,20 @@
 
 # OpenInvoice engine routes
 OpenInvoice::Engine.routes.draw do
-  scope ':public_id' do
-    # invoices endpoint to login and view invoice
-    resources :invoices, only: :show, param: :invoice_id
-  end
-
   # admin (owner) endpoints
   namespace :adm do
     # create invoices
-    resources :invoices, only: :create do
+    resources :invoices, only: %i[create show index] do
       # and send 'em
       resource :send, only: :create
+      # list recipients per invoice
+      resources :recipients, only: :index
     end
+  end
+
+  scope ':public_id' do
+    # invoices endpoint to login and view invoice
+    resources :invoices, only: :show, param: :invoice_id
   end
 
   # list of invoices for authenticated recipient

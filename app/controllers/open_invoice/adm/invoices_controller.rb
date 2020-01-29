@@ -9,6 +9,19 @@ module OpenInvoice
     # admin invoices controller
     class InvoicesController < AdmController
 
+      # invoices list
+      def index
+        @invoices = Invoices::List.call(params[:page])
+      end
+
+      # show details of the invoice
+      def show
+        # retrieve the invoice
+        @invoice = Invoice.to_adapter.get(params.require(:id))
+        # respond 404 when invoice was not found
+        head(:not_found) unless @invoice
+      end
+
       # endpoint to create invoices
       # !!! expects multipart/form-data, not json !!!
       def create
@@ -18,7 +31,7 @@ module OpenInvoice
         # if invoice was saved
         if @invoice.persisted?
           # respond 201 created and include invoice id
-          render status: :created
+          render :show, status: :created
         else
           # render create errors
           respond_with_record(@invoice)
